@@ -12,11 +12,15 @@ Version:       0
 Release:       1
 Group:         System
 License:       BSD-3-Clause
+Source:        %{name}-%{version}.tar.bz2
 BuildRequires: dtc
 BuildRequires: cpp
 
 %description
 %{summary}
+
+%prep
+%setup -q -n %{name}-%{version}
 
 %build
 cpp -nostdinc -I %{includes_directory} -undef -x assembler-with-cpp %{master_dts} > %{master_dts}.preprocessed
