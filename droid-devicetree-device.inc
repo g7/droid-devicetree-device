@@ -19,7 +19,7 @@ BuildRequires: cpp
 %{summary}
 
 %build
-cpp -nostdinc -I include -undef -x assembler-with-cpp %{master_dts} > %{master_dts}.preprocessed
+cpp -nostdinc -I %{includes_directory} -undef -x assembler-with-cpp %{master_dts} > %{master_dts}.preprocessed
 dtc -O dtb -b 0 -o %{final_dtb} %{master_dts}.preprocessed
 
 %install
